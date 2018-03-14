@@ -6,5 +6,9 @@
 </head>
 <body>
     <p th:text="'Hello, ' + ${name} + '!'" />
+    <p th:text="'We already have a company:'" />
+    <ul>
+        <li th:each="user : ${users}" th:text="${user.name}" />
+    </ul>
 </body>
 </html>
