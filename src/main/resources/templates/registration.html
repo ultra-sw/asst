@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="ru" xmlns:v-bind="http://www.w3.org/1999/xhtml" xmlns:th="http://www.w3.org/1999/xhtml">
+<html lang="ru" xmlns:v-bind="http://www.w3.org/1999/xhtml" xmlns:v-on="http://www.w3.org/1999/xhtml">
 
 <head>
     <meta charset="utf-8" />
@@ -9,8 +9,7 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous" />
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
     <link rel="stylesheet" href="css/registration.css" />
-    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
-    <script src="js/vue-scripts.js"></script>
+
     <title>ASST – Регистрация</title>
 </head>
 
@@ -94,12 +93,13 @@
         <form action="/hello" method="post">
         <div class="form-group">
         <div class="row">
-            <div id="wand"><img src ="img/wand.png"></img></div> <div class="col" style="margin-top:2px;">
+            <div id="wand"><img src ="img/wand.png" /></div> <div class="col" style="margin-top:2px;">
                 <h1>Магическая регистрация</h1>
-                Имя в системе:<div> <input style="margin-bottom:1px" name="login" placeholder="Слово или e-mail на латинском алфавите"></input></div>
+                Имя в системе:<div><input style="margin-bottom:1px" name="login"
+                                          placeholder="Слово или e-mail на латинском алфавите"/></div>
                Пароль в системе:<div>
-                <input type="password" placeholder="Латинский алфавит, цифры и не только" id="psw" name="psw" onChange="checkPasswordMatch();" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters" required="true"></input></div>
-               Повтор пароля:<div> <input type="password" style="margin-bottom:1px" id="psw2" name="psw2" onChange="checkPasswordMatch();"></input></div>
+                <input type="password" placeholder="Латинский алфавит, цифры и не только" id="psw" name="psw" onChange="checkPasswordMatch();" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters" required="true" /></div>
+               Повтор пароля:<div> <input type="password" style="margin-bottom:1px" id="psw2" name="psw2" onChange="checkPasswordMatch();" /></div>
                <!-- <img src="img/promo-img.png" alt="promo-img" /> -->
             </div>
             <div class="col-2">
@@ -223,5 +223,7 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 <!-- production version, optimized for size and speed -->
 <!-- <script src="https://cdn.jsdelivr.net/npm/vue"></script> -->
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script src="js/vue-scripts.js"></script>
 </body>
 </html>

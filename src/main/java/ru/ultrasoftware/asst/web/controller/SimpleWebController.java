@@ -32,7 +32,7 @@ public class SimpleWebController {
     //КОНЕЦ ГЛАВНОЙ СТРАНИЦЫ
 
     //ПРОЦЕДУРА РЕГИСТРАЦИИ
-    @RequestMapping("/hello")
+    @RequestMapping("/registration")
         public String registration(Map<String,Object> model, HttpServletRequest request) {
             HttpSession s = request.getSession();
             return "registration";
