@@ -5,24 +5,22 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
     <link rel="icon" type="image/png" href="img/favicon.png" />
-
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous" />
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
-    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="css/hello.css" />
 
     <title>ASST</title>
 </head>
 
 <body>
-
     <div class="container-fluid">
         <div id="navibar">
             <div class="overlay-menu" v-bind:class="{ open: isMenuOpen }">
                 <ul class="list-group list-group-flush">
-                    <li class="list-group-item">Портфель 1</li>
-                    <li class="list-group-item">Портфель 2</li>
-                    <li class="list-group-item">Портфель 3</li>
-                    <li class="list-group-item">Портфель 4</li>
+                    <li class="list-group-item">О проекте</li>
+                    <li class="list-group-item">Обратная связь</li>
+                    <li class="list-group-item">Часто задаваемые вопросы</li>
+                    <li class="list-group-item">…</li>
                 </ul>
             </div>
             <!--<div class="row justify-content-md-center" v-bind:class="{ open: isLoginOpen }">
@@ -39,14 +37,14 @@
                     <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Твой е-мейл" style="margin-bottom:1px" />
                     <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Твой пароль" />
                     <div class="form-check">
-                        <input type="checkbox" class="form-check-input" id="exampleCheck1" />
+                        <input type="checkbox" class="form-check-input" id="exampleCheck1" style="box-shadow:none;"/>
                         <label class="form-check-label" for="exampleCheck1">Запомнить</label>
                     </div>
                     <div class="row">
                         <div class="col">
-                            <button type="submit" class="btn btn-primary col" style="margin-bottom: 1px">Войти</button>
-                            <button type="submit" class="btn btn-primary col">Регистрация</button>
-                        </div>
+                            <button type="submit" class="btn btn-primary col" style="margin-bottom: 1px">Войти</button></div></div>
+                            <div class="row-2">
+                            <a href = "/hello"><button type="submit" class="btn btn-primary col">Регистрация</button></a>
                     </div>
                 </form>
             </div>
@@ -54,12 +52,11 @@
                 <div class="col-6">
                     <div class="row">
                         <i v-on:click="buttonMenu" class="material-icons">menu</i>
-                        <a>Портфель 1</a>
+                        <a><!--Портфель 1--></a>
                     </div>
                 </div>
                 <div class="col-6">
                     <div class="row" style="float: right;" v-bind:class="{ open: isLoginOpen }">
-
                         <!--  <ul class="nav navbar-nav navbar-right">
                                     <li class="dropdown">
                                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button">
@@ -97,19 +94,17 @@
                     <h1>Промо-информация</h1>
                     <img src="img/promo-img.png" alt="promo-img" />
                     <div class="try-it">
-                        <button type="button" class="btn btn-primary">TRY IT !!!</button>
+                        <a href = "/hello"><button type="button" class="btn btn-primary">Регистрация</button></a>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-
     <p th:text="'Hello, ' + ${name} + '!'" />
     <p th:text="'We already have a company:'" />
     <ul>
         <li th:each="user : ${users}" th:text="${user.name}" />
     </ul>
-
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
@@ -117,7 +112,5 @@
     <!-- production version, optimized for size and speed -->
     <!-- <script src="https://cdn.jsdelivr.net/npm/vue"></script> -->
     <script src="js/vue-scripts.js"></script>
-
 </body>
-
 </html>
