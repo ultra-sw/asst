@@ -1,0 +1,60 @@
+<div id="navibar" xmlns:v-on="http://www.w3.org/1999/xhtml" xmlns:v-bind="http://www.w3.org/1999/xhtml" xmlns:th="http://www.w3.org/1999/xhtml">
+    <div class="dropdown-menu menu" v-bind:class="{ open: isMenuOpen }">
+        <ul class="list-group list-group-flush">
+            <!-- Пункты бокового меню -->
+            <li class="list-group-item">
+                <a th:href="@{/}">Главная</a>
+            </li>
+            <li class="list-group-item">
+                <a th:href="@{/dashboard}">Dashboard</a>
+            </li>
+            <li class="list-group-item">
+                <a th:href="@{/user-info}">Информация о пользователе</a>
+            </li>
+            <li th:if="${#httpServletRequest.userPrincipal != null}" class="list-group-item">
+                <a th:href="@{/logout}">Выход</a>
+            </li>
+            <li class="list-group-item">О проекте</li>
+            <li class="list-group-item">Обратная связь</li>
+            <li class="list-group-item">Часто задаваемые вопросы</li>
+            <li class="list-group-item">…</li>
+            <!-- /Пункты бокового меню -->
+        </ul>
+    </div>
+    <div class="dropdown-menu login" v-bind:class="{ open: isLoginOpen }">
+        <!-- Форма входа -->
+        <form name='f' th:action="@{/j_spring_security_check}" method="POST">
+            <div class="form-group">
+                <input type="email" class="form-control" name="username" placeholder="Введите e-mail" />
+            </div>
+            <div class="form-group">
+                <input type="password" class="form-control" name="password" placeholder="Введите пароль" />
+            </div>
+            <div class="form-group">
+                <button type="submit" class="btn btn-primary col">Войти</button>
+            </div>
+            <div class="form-group">
+                <a href="/registration" class="btn btn-primary col">Регистрация</a>
+            </div>
+        </form>
+        <!-- /Форма входа -->
+    </div>
+    <nav class="navbar navbar-light bg-light justify-content-between">
+        <div class="col-6">
+            <div class="row">
+                <!-- Левая навигационная панель -->
+                <i v-on:click="buttonMenu" class="material-icons">menu</i>
+                <!-- <a>Портфель 1</a> -->
+                <!-- /Левая навигационная панель -->
+            </div>
+        </div>
+        <div class="col-6">
+            <div class="row" style="float: right" v-bind:class="{ open: isLoginOpen }">
+                <!-- Правая навигационная панель -->
+                <a>{{ userName }}</a>
+                <i v-on:click="buttonLogin" class="material-icons">person</i>
+                <!-- /Правая навигационная панель -->
+            </div>
+        </div>
+    </nav>
+</div>

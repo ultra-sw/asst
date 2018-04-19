@@ -14,15 +14,23 @@ import ru.ultrasoftware.asst.web.controller.WebUtils;
  
 @Controller
 public class MainController {
- 
+
+    final String TITLE = "title";
+
+    void setTitle(Model model, String object){
+        model.addAttribute(TITLE, object);
+    }
+
     @RequestMapping(value = { "/", "/welcome" }, method = RequestMethod.GET)
     public String welcomePage(Model model) {
-        model.addAttribute("title", "Welcome");
+        setTitle(model,"Welcome");
+
         model.addAttribute("message", "This is welcome page!");
-        return "welcomePage";
+
+        return "index";
     }
  
-    @RequestMapping(value = "/admin", method = RequestMethod.GET)
+    @RequestMapping(value = "/dashboard", method = RequestMethod.GET)
     public String adminPage(Model model, Principal principal) {
          
         User loginedUser = (User) ((Authentication) principal).getPrincipal();
@@ -30,22 +38,22 @@ public class MainController {
         String userInfo = WebUtils.toString(loginedUser);
         model.addAttribute("userInfo", userInfo);
          
-        return "adminPage";
+        return "dashboard";
     }
  
     @RequestMapping(value = "/login", method = RequestMethod.GET)
     public String loginPage(Model model) {
  
-        return "loginPage";
+        return "login_page";
     }
  
-    @RequestMapping(value = "/logoutSuccessful", method = RequestMethod.GET)
-    public String logoutSuccessfulPage(Model model) {
+    @RequestMapping(value = "/logout-successful", method = RequestMethod.GET)
+    public String logoutSuccessful(Model model) {
         model.addAttribute("title", "Logout");
-        return "logoutSuccessfullPage";
+        return "logout_successful";
     }
  
-    @RequestMapping(value = "/userInfo", method = RequestMethod.GET)
+    @RequestMapping(value = "/user-info", method = RequestMethod.GET)
     public String userInfo(Model model, Principal principal) {
  
         // (1) (en)
@@ -61,8 +69,26 @@ public class MainController {
         String userInfo = WebUtils.toString(loginedUser);
         model.addAttribute("userInfo", userInfo);
  
-        return "userInfoPage";
+        return "user_info";
     }
+
+    @RequestMapping(value = "/registration", method = RequestMethod.GET)
+    public String registration(Model model) {
+        return "registration";
+    }
+    //ПРОЦЕДУРА РЕГИСТРАЦИИ: ПЕРЕДАЧА ДАННЫХ ИЗ ФОРМ
+    /*@RequestMapping(value = "hello", method = RequestMethod.POST)
+    public String helloForms(@RequestParam(value="login",required=true) String login,
+                             @RequestParam(value="psw",required=true) String psw,
+                             @RequestParam(value="psw2",required=true) String psw2,ModelMap model)
+    {
+        model.addAttribute("login",login);
+        model.addAttribute("psw",psw);
+        model.addAttribute("psw2",psw2);
+        model.put("data",login+psw+psw2);
+    return "dataSent";
+    }*/
+
  
     @RequestMapping(value = "/403", method = RequestMethod.GET)
     public String accessDenied(Model model, Principal principal) {
@@ -80,7 +106,7 @@ public class MainController {
  
         }
  
-        return "403Page";
+        return "403";
     }
  
 }

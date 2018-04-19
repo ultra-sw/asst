@@ -1,0 +1,95 @@
+/* Стили меню */
+
+.dropdown-menu.menu {
+    display: none;
+    position: fixed;
+    top: 40px;
+    left: 15px;
+}
+
+.dropdown-menu.menu.open {
+    display: block;
+}
+
+.dropdown-menu.login {
+    display: none;
+    position: fixed;
+    z-index: 100;
+    background: white;
+    right: 15px;
+    top: 40px;
+    left: inherit;
+    padding: .75rem 1.25rem;
+}
+
+.dropdown-menu.login.open {
+    display: block;
+}
+
+/* /Стили меню */
+
+/* Стили значков */
+
+i {
+    user-select: none;
+    cursor: pointer;
+}
+
+/* /Стили значков */
+
+img {
+    width: 100%
+}
+
+ul {
+    padding: 0px;
+    margin: 0px;
+    list-style: none;
+}
+
+/* Кастомные стили кнопок */
+
+.btn-primary {
+    color: #343a40;
+    background-color: #fff;
+    border-color: #6610f2;
+}
+
+.btn-primary:hover {
+    color: #fff;
+    background-color: #6610f2;
+    border-color: #6610f2;
+}
+
+.btn-primary:active {
+    color: #ffc107;
+    background-color: #6610f2;
+    border-color: #6610f2;
+}
+
+.btn-primary:not(:disabled):not(.disabled).active,
+.btn-primary:not(:disabled):not(.disabled):active,
+.show>.btn-primary.dropdown-toggle {
+    color: #343a40;
+    background-color: #fff;
+    border-color: #6610f2;
+}
+
+.buttons-logsignin {
+    width: 50%;
+}
+
+/* /Кастомные стили кнопок */
+
+/* Временные стили */
+
+.try-it {
+    text-align: center;
+    margin-top: 12px;
+}
+
+.try-it .btn {
+    widows: 250px;
+}
+
+/* /Временные стили */

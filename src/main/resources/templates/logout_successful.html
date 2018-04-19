@@ -12,7 +12,7 @@
     <link rel="stylesheet" href="/css/style.css" />
     <!-- /Стили -->
 
-    <title th:utext="${title}"></title>
+    <title>Logout</title>
 </head>
 
 <body>
@@ -26,23 +26,7 @@
         <div id="content" class="container">
             <div class="row">
                 <div class="col">
-                    <h1>Промо-информация</h1>
-                    <img src="img/promo-img.png" alt="promo-img" />
-                    <div class="try-it">
-                        <a href="/try-it">
-                            <button type="button" class="btn btn-primary">try-it</button>
-                        </a>
-                    </div>
-                    <div>
-                        <p th:text="'Hello, ' + ${name} + '!'"></p>
-                        <p th:text="'We already have a company:'"></p>
-                        <ul>
-                            <li th:each="user : ${users}" th:text="${user.name}"></li>
-                        </ul>
-                        <h2>Message :
-                            <span th:utext="${message}"></span>
-                        </h2>
-                    </div>
+                    <h1>Logout Successful!</h1>
                 </div>
             </div>
         </div>

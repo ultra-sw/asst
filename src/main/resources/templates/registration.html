@@ -1,229 +1,195 @@
 <!DOCTYPE html>
-<html lang="ru" xmlns:v-bind="http://www.w3.org/1999/xhtml" xmlns:v-on="http://www.w3.org/1999/xhtml">
+<html lang="ru" xmlns:th="http://www.w3.org/1999/xhtml">
 
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
     <link rel="icon" type="image/png" href="img/favicon.png" />
 
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous" />
-    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
-    <link rel="stylesheet" href="css/registration.css" />
+    <!-- Стили -->
+    <link rel="stylesheet" href="/node_modules/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="//fonts.googleapis.com/icon?family=Material+Icons" />
+    <link rel="stylesheet" href="/css/registration.css" />
+    <link rel="stylesheet" href="/css/style.css" />
+    <!-- /Стили -->
 
     <title>ASST – Регистрация</title>
 </head>
 
 <body>
+    <div id="app" class="container-fluid">
 
-<div class="container-fluid" id="app" >
-    <div id="navibar">
-        <div class="overlay-menu" v-bind:class="{ open: isMenuOpen }">
-            <ul class="list-group list-group-flush">
-                <li class="list-group-item">О проекте</li>
-                <li class="list-group-item">Обратная связь</li>
-                <li class="list-group-item">Часто задаваемые вопросы</li>
-                <li class="list-group-item">…</li>
-            </ul>
-        </div>
-        <!--<div class="row justify-content-md-center" v-bind:class="{ open: isLoginOpen }">
-            <div class="col-md-5">
-                <form>
-                    <input />
-                    <input />
-                    <button>Войти</button>
-                </form>
-            </div>
-        </div>-->
-        <div class="dropdown-login" v-bind:class="{ open: isLoginOpen }">
-            <form>
-                <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Твой е-мейл" style="margin-bottom:1px" />
-                <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Твой пароль" />
-                <div class="form-check">
-                    <input type="checkbox" class="form-check-input" id="exampleCheck1" />
-                    <label class="form-check-label" for="exampleCheck1">Запомнить</label>
-                </div>
-                <div class="row">
-                    <div class="col">
-                        <button type="submit" class="btn btn-primary col" style="margin-bottom: 1px">Войти</button>
-                        <a href = "/hello"><button type="submit" class="btn btn-primary col">Регистрация</button></a>
+        <!-- навигация -->
+        <th:block th:include="/main_nav" />
+        <!-- /навигация -->
+
+        <!-- Контент -->
+        <div id="content" class="container" style="margin-top:2px;">
+            <form action="/hello" method="post">
+                <div class="form-group">
+                    <div class="row">
+                        <div id="wand">
+                            <img src="img/wand.png" />
+                        </div>
+                        <div class="col" style="margin-top:2px;">
+                            <h1>Магическая регистрация</h1>
+                            <form>
+                                <div class="form-group">
+                                    <label>Имя в системе:</label>
+                                    <input type="email" class="form-control" name="login" placeholder="Слово или e-mail на латинском алфавите" />
+                                </div>
+                                <div class="form-group">
+                                    <label>Пароль в системе:</label>
+                                    <input type="password" class="form-control" placeholder="Латинский алфавит, цифры и не только" id="psw" name="psw" onChange="checkPasswordMatch();" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters" required="true" />
+                                </div>
+                                <div class="form-group">
+                                    <label> Повтор пароля:</label>
+                                    <input type="password" class="form-control" style="margin-bottom:1px" id="psw2" name="psw2" onChange="checkPasswordMatch();" />
+                                </div>
+                                <!-- <img src="img/promo-img.png" alt="promo-img" /> -->
+                            </form>
+                        </div>
+                        <div class="col-2">
+                            <div id="message">
+                                <strong>Рекомендации к паролю:</strong>
+                                <p id="letter" class="invalid">Буква
+                                    <b>нижнего</b> регистра</p>
+                                <p id="capital" class="invalid">Буква
+                                    <b>верхнего</b> регистра</p>
+                                <p id="number" class="invalid">Цифра</p>
+                                <p id="length" class="invalid">Не менее
+                                    <b>8 символов</b>
+                                </p>
+                                <font color="#6c757d">
+                                    <small>
+                                        <p> Не используйте пароли, которые </p>
+                                        <p>можно подобрать на основе персональной </p>
+                                        <p>информации о вас </p>
+                                    </small>
+                                </font>
+                            </div>
+                            <div class="checkerInvalid" id="divCheckPasswordMatch"></div>
+                        </div>
+                        <div class="col-3">
+                            <div class="try-it">
+                                <button type="submit" class="btn btn-primary">Далее →</button>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </form>
         </div>
-        <nav class="navbar navbar-light bg-light justify-content-between">
-            <div class="col-6">
-                <div class="row">
-                    <i v-on:click="buttonMenu" class="material-icons">menu</i>
-                    <a><!--mapping: /hello – file: templates/registration.html--></a>
-                </div>
-            </div>
-            <div class="col-6">
-                <div class="row" style="float: right;" v-bind:class="{ open: isLoginOpen }" id="app2">
-                    <!--  <ul class="nav navbar-nav navbar-right">
-                                <li class="dropdown">
-                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button">
-                                        Sign In<span class="caret"></span>
-                                    </a>
-                                    <div class="dropdown-menu" id="formLogin">
-                                        <div class="row">
-                                            <div class="container-fluid">
-                                                <form>
-                                                    <div class="form-group">
-                                                        <label>Username</label>
-                                                        <input class="form-control" name="username" id="username" type="text">
-                                                    </div>
-                                                    <div class="form-group">
-                                                        <label>Password</label>
-                                                        <input class="form-control" name="password" id="password" type="password"><br>
-                                                    </div>
-                                                    <button type="submit" id="btnLogin" class="btn btn-success btn-sm">Login</button>
-                                                </form>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </li>
-                                <li><a href="#" data-toggle="modal" data-target='#modalRegister'>Register</a></li>
-                            </ul> -->
-                    <i v-on:click="buttonLogin" class="material-icons">person</i>
-                </div>
-            </div>
-        </nav>
-    </div>
-    <div id="content" class="container"  style="margin-top:2px;">
-        <form action="/hello" method="post">
-        <div class="form-group">
-        <div class="row">
-            <div id="wand"><img src ="img/wand.png" /></div> <div class="col" style="margin-top:2px;">
-                <h1>Магическая регистрация</h1>
-                Имя в системе:<div><input style="margin-bottom:1px" name="login"
-                                          placeholder="Слово или e-mail на латинском алфавите"/></div>
-               Пароль в системе:<div>
-                <input type="password" placeholder="Латинский алфавит, цифры и не только" id="psw" name="psw" onChange="checkPasswordMatch();" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters" required="true" /></div>
-               Повтор пароля:<div> <input type="password" style="margin-bottom:1px" id="psw2" name="psw2" onChange="checkPasswordMatch();" /></div>
-               <!-- <img src="img/promo-img.png" alt="promo-img" /> -->
-            </div>
-            <div class="col-2">
-                <div id="message">
-                    <strong>Рекомендации к паролю:</strong>
-                    <p id="letter" class="invalid">Буква <b>нижнего</b> регистра</p>
-                    <p id="capital" class="invalid">Буква <b>верхнего</b> регистра</p>
-                    <p id="number" class="invalid">Цифра</p>
-                    <p id="length" class="invalid">Не менее <b>8 символов</b></p>
-                    <font color="#6c757d"> <small><p> Не используйте пароли, которые </p>
-                    <p>можно подобрать на основе персональной  </p>
-                    <p>информации о вас </p></small></font>
-                </div>
-                <div class="checkerInvalid" id="divCheckPasswordMatch"></div>
-            </div><div class="col-3">
-            <div class="try-it">
-                <button type="submit" class="btn btn-primary">Далее →</button>
-            </div></div>
-        </div></div></form>
-    </div>
+        <!-- /Контент -->
+
     </div>
     <script>
-    var myInput = document.getElementById("psw");
-    var letter = document.getElementById("letter");
-    var capital = document.getElementById("capital");
-    var number = document.getElementById("number");
-    var length = document.getElementById("length");
+        var myInput = document.getElementById("psw");
+        var letter = document.getElementById("letter");
+        var capital = document.getElementById("capital");
+        var number = document.getElementById("number");
+        var length = document.getElementById("length");
 
-    // When the user clicks on the password field, show the message box
-    myInput.onfocus = function() {
-        document.getElementById("message").style.display = "block";
-    }
-
-    // When the user clicks outside of the password field, hide the message box
-    myInput.onblur = function() {
-        document.getElementById("message").style.display = "none";
-    }
-
-    // When the user starts to type something inside the password field
-    myInput.onkeyup = function() {
-      // Validate lowercase letters
-      var lowerCaseLetters = /[a-z]/g;
-      if(myInput.value.match(lowerCaseLetters)) {
-        letter.classList.remove("invalid");
-        letter.classList.add("valid");
-      } else {
-        letter.classList.remove("valid");
-        letter.classList.add("invalid");
-      }
-
-      // Validate capital letters
-      var upperCaseLetters = /[A-Z]/g;
-      if(myInput.value.match(upperCaseLetters)) {
-        capital.classList.remove("invalid");
-        capital.classList.add("valid");
-      } else {
-        capital.classList.remove("valid");
-        capital.classList.add("invalid");
-      }
-
-      // Validate numbers
-      var numbers = /[0-9]/g;
-      if(myInput.value.match(numbers)) {
-        number.classList.remove("invalid");
-        number.classList.add("valid");
-      } else {
-        number.classList.remove("valid");
-        number.classList.add("invalid");
-      }
-
-      // Validate length
-      if(myInput.value.length >= 8) {
-        length.classList.remove("invalid");
-        length.classList.add("valid");
-      } else {
-        length.classList.remove("valid");
-        length.classList.add("invalid");
-      }
-    }
-</script>
-
-<script type="text/javascript">
-
-    function checkPasswordMatch() {
-    var password = $("#psw").val();
-    var confirmPassword = $("#psw2").val();
-
-    $(document).ready(function () {
-       $("#psw, #psw2").keyup(checkPasswordMatch);
-    });
-    if(password==""||confirmPassword==""){
-        $("#divCheckPasswordMatch").html("");
-        document.getElementById("divCheckPasswordMatch").style.display="none";
-    }
-
-    if (password != confirmPassword){
-        document.getElementById("divCheckPasswordMatch").style.borderLeft="3px solid #dc3545";
-        document.getElementById("divCheckPasswordMatch").style.display="block";
-        $("#divCheckPasswordMatch").html("Пароль повторён <b>не</b> верно");
-
-    }else{
-        document.getElementById("divCheckPasswordMatch").style.display="block";
-        document.getElementById("divCheckPasswordMatch").style.borderLeft="3px solid #28a745";
-        $("#divCheckPasswordMatch").html("Пароль повторён верно");
-        if((password=="")||(confirmPassword=="")){
-        document.getElementById("divCheckPasswordMatch").style.display="none";
+        // When the user clicks on the password field, show the message box
+        myInput.onfocus = function () {
+            document.getElementById("message").style.display = "block";
         }
 
-    }
-}
+        // When the user clicks outside of the password field, hide the message box
+        myInput.onblur = function () {
+            document.getElementById("message").style.display = "none";
+        }
 
+        // When the user starts to type something inside the password field
+        myInput.onkeyup = function () {
+            // Validate lowercase letters
+            var lowerCaseLetters = /[a-z]/g;
+            if (myInput.value.match(lowerCaseLetters)) {
+                letter.classList.remove("invalid");
+                letter.classList.add("valid");
+            } else {
+                letter.classList.remove("valid");
+                letter.classList.add("invalid");
+            }
+
+            // Validate capital letters
+            var upperCaseLetters = /[A-Z]/g;
+            if (myInput.value.match(upperCaseLetters)) {
+                capital.classList.remove("invalid");
+                capital.classList.add("valid");
+            } else {
+                capital.classList.remove("valid");
+                capital.classList.add("invalid");
+            }
+
+            // Validate numbers
+            var numbers = /[0-9]/g;
+            if (myInput.value.match(numbers)) {
+                number.classList.remove("invalid");
+                number.classList.add("valid");
+            } else {
+                number.classList.remove("valid");
+                number.classList.add("invalid");
+            }
+
+            // Validate length
+            if (myInput.value.length >= 8) {
+                length.classList.remove("invalid");
+                length.classList.add("valid");
+            } else {
+                length.classList.remove("valid");
+                length.classList.add("invalid");
+            }
+        }
     </script>
-<!--<p th:text="'Hellsdfsfsfsfdo, ' + ${name} + '!'" />
+    <script type="text/javascript">
+        function checkPasswordMatch() {
+            var password = $("#psw").val();
+            var confirmPassword = $("#psw2").val();
+
+            $(document).ready(function () {
+                $("#psw, #psw2").keyup(checkPasswordMatch);
+            });
+            if (password == "" || confirmPassword == "") {
+                $("#divCheckPasswordMatch").html("");
+                document.getElementById("divCheckPasswordMatch").style.display = "none";
+            }
+
+            if (password != confirmPassword) {
+                document.getElementById("divCheckPasswordMatch").style.borderLeft = "3px solid #dc3545";
+                document.getElementById("divCheckPasswordMatch").style.display = "block";
+                $("#divCheckPasswordMatch").html("Пароль повторён <b>не</b> верно");
+
+            } else {
+                document.getElementById("divCheckPasswordMatch").style.display = "block";
+                document.getElementById("divCheckPasswordMatch").style.borderLeft = "3px solid #28a745";
+                $("#divCheckPasswordMatch").html("Пароль повторён верно");
+                if ((password == "") || (confirmPassword == "")) {
+                    document.getElementById("divCheckPasswordMatch").style.display = "none";
+                }
+
+            }
+        }
+    </script>
+    <!--<p th:text="'Hellsdfsfsfsfdo, ' + ${name} + '!'" />
 <p th:text="'We already have a company:'" />
 <ul>
     <li th:each="user : ${users}" th:text="${user.name}" />
 </ul>
 -->
-<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-<!-- production version, optimized for size and speed -->
-<!-- <script src="https://cdn.jsdelivr.net/npm/vue"></script> -->
-<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
-<script src="js/vue-scripts.js"></script>
+
+    <!-- Bootstrap-->
+    <script src="/node_modules/jquery/dist/jquery.slim.min.js"></script>
+    <script src="/node_modules/popper.js/dist/umd/popper.min.js"></script>
+    <script src="/node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+    <!-- /Bootstrap-->
+
+    <!-- Vue -->
+    <script src="/node_modules/vue/dist/vue.js"></script>
+    <!-- production version, optimized for size and speed -->
+    <!-- <script src="/node_modules/vue/dist/vue.min.js"></script> -->
+    <script src="/js/vue-scripts.js"></script>
+    <!-- /Vue -->
+
 </body>
+
 </html>
