@@ -22,7 +22,7 @@ public class MainController {
     }
 
     @RequestMapping(value = { "/", "/welcome" }, method = RequestMethod.GET)
-    public String welcomePage(Model model) {
+    public String index(Model model) {
         setTitle(model,"Welcome");
 
         model.addAttribute("message", "This is welcome page!");
@@ -31,10 +31,10 @@ public class MainController {
     }
  
     @RequestMapping(value = "/dashboard", method = RequestMethod.GET)
-    public String adminPage(Model model, Principal principal) {
-         
+    public String dashboard(Model model, Principal principal) {
+
         User loginedUser = (User) ((Authentication) principal).getPrincipal();
- 
+
         String userInfo = WebUtils.toString(loginedUser);
         model.addAttribute("userInfo", userInfo);
          
@@ -42,9 +42,9 @@ public class MainController {
     }
  
     @RequestMapping(value = "/login", method = RequestMethod.GET)
-    public String loginPage(Model model) {
+    public String login(Model model) {
  
-        return "login_page";
+        return "login";
     }
  
     @RequestMapping(value = "/logout-successful", method = RequestMethod.GET)
@@ -76,6 +76,7 @@ public class MainController {
     public String registration(Model model) {
         return "registration";
     }
+
     //ПРОЦЕДУРА РЕГИСТРАЦИИ: ПЕРЕДАЧА ДАННЫХ ИЗ ФОРМ
     /*@RequestMapping(value = "hello", method = RequestMethod.POST)
     public String helloForms(@RequestParam(value="login",required=true) String login,
@@ -88,7 +89,6 @@ public class MainController {
         model.put("data",login+psw+psw2);
     return "dataSent";
     }*/
-
  
     @RequestMapping(value = "/403", method = RequestMethod.GET)
     public String accessDenied(Model model, Principal principal) {
