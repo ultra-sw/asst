@@ -7,10 +7,13 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import org.springframework.web.bind.annotation.RequestParam;
 import ru.ultrasoftware.asst.web.controller.WebUtils;
+import ru.ultrasoftware.asst.domain.AppUser;
  
 @Controller
 public class MainController {
@@ -78,18 +81,25 @@ public class MainController {
     }
 
     //ПРОЦЕДУРА РЕГИСТРАЦИИ: ПЕРЕДАЧА ДАННЫХ ИЗ ФОРМ
-    /*@RequestMapping(value = "hello", method = RequestMethod.POST)
+    @RequestMapping(value = "/registration", method = RequestMethod.POST)
+    //перехватываем введённые параметры из форм на странице registration.html
     public String helloForms(@RequestParam(value="login",required=true) String login,
                              @RequestParam(value="psw",required=true) String psw,
-                             @RequestParam(value="psw2",required=true) String psw2,ModelMap model)
+                             @RequestParam(value="psw2",required=true) String psw2, ModelMap model)
     {
+        //добавление параметров в модель. Теперь можно передать их на веб-страницу
         model.addAttribute("login",login);
         model.addAttribute("psw",psw);
         model.addAttribute("psw2",psw2);
-        model.put("data",login+psw+psw2);
-    return "dataSent";
-    }*/
- 
+        model.put("data","Your data:"+"Login: "+login+", Password: "+psw);
+        //На страницу dataSent.html добавляем:
+        //<p th:text="'Hello, ' + ${data} + '!'"></p>
+    return "tmp/dataSent";
+        //Открылась страница, на которой написаны все данные из форм
+
+    }
+    //КОНЕЦ ПРОЦЕДУРА РЕГИСТРАЦИИ: ПЕРЕДАЧА ДАННЫХ ИЗ ФОРМ
+
     @RequestMapping(value = "/403", method = RequestMethod.GET)
     public String accessDenied(Model model, Principal principal) {
  

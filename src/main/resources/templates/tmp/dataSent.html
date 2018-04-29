@@ -15,8 +15,8 @@
 </head>
 
 <body>
-
-<div class="container-fluid" id="app" >
+<p th:text="'Hello, ' + ${data} + '!'"></p>
+<!--<div class="container-fluid" id="app" >
     <div id="navibar">
         <div class="overlay-menu" v-bind:class="{ open: isMenuOpen }">
             <ul class="list-group list-group-flush">
@@ -26,7 +26,7 @@
                 <li class="list-group-item">…</li>
             </ul>
         </div>
-        <!--<div class="row justify-content-md-center" v-bind:class="{ open: isLoginOpen }">
+        &lt;!&ndash;<div class="row justify-content-md-center" v-bind:class="{ open: isLoginOpen }">
             <div class="col-md-5">
                 <form>
                     <input />
@@ -34,7 +34,7 @@
                     <button>Войти</button>
                 </form>
             </div>
-        </div>-->
+        </div>&ndash;&gt;
         <div class="dropdown-login" v-bind:class="{ open: isLoginOpen }">
             <form>
                 <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Твой е-мейл" style="margin-bottom:1px" />
@@ -55,12 +55,12 @@
             <div class="col-6">
                 <div class="row">
                     <i v-on:click="buttonMenu" class="material-icons">menu</i>
-                    <a><!--mapping: /hello – file: templates/registration.html--></a>
+                    <a>&lt;!&ndash;mapping: /hello – file: templates/registration.html&ndash;&gt;</a>
                 </div>
             </div>
             <div class="col-6">
                 <div class="row" style="float: right;" v-bind:class="{ open: isLoginOpen }" id="app2">
-                    <!--  <ul class="nav navbar-nav navbar-right">
+                    &lt;!&ndash;  <ul class="nav navbar-nav navbar-right">
                                 <li class="dropdown">
                                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button">
                                         Sign In<span class="caret"></span>
@@ -84,7 +84,7 @@
                                     </div>
                                 </li>
                                 <li><a href="#" data-toggle="modal" data-target='#modalRegister'>Register</a></li>
-                            </ul> -->
+                            </ul> &ndash;&gt;
                     <i v-on:click="buttonLogin" class="material-icons">person</i>
                 </div>
             </div>
@@ -98,9 +98,9 @@
                     <h1>Магическая регистрация ${data}</h1>
                     Имя в системе:<div> <input style="margin-bottom:1px" name="login" placeholder="Слово или e-mail на латинском алфавите"></input></div>
                     Пароль в системе:<div>
-                    <input type="password" placeholder="Латинский алфавит, цифры и не только" id="psw" name="psw" onChange="checkPasswordMatch();" required="true"></input></div> <!--pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters"-->
+                    <input type="password" placeholder="Латинский алфавит, цифры и не только" id="psw" name="psw" onChange="checkPasswordMatch();" required="true"></input></div> &lt;!&ndash;pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters"&ndash;&gt;
                     Повтор пароля:<div> <input type="password" style="margin-bottom:1px" id="psw2" name="psw2" onChange="checkPasswordMatch();"></input></div>
-                    <!-- <img src="img/promo-img.png" alt="promo-img" /> -->
+                    &lt;!&ndash; <img src="img/promo-img.png" alt="promo-img" /> &ndash;&gt;
                 </div>
                     <div class="col-2">
                         <div id="message">
@@ -212,16 +212,16 @@
 }
 
     </script>
-<!--<p th:text="'Hellsdfsfsfsfdo, ' + ${name} + '!'" />
+&lt;!&ndash;<p th:text="'Hellsdfsfsfsfdo, ' + ${name} + '!'" />
 <p th:text="'We already have a company:'" />
 <ul>
     <li th:each="user : ${users}" th:text="${user.name}" />
 </ul>
--->
+&ndash;&gt;
 <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-<!-- production version, optimized for size and speed -->
-<!-- <script src="https://cdn.jsdelivr.net/npm/vue"></script> -->
+&lt;!&ndash; production version, optimized for size and speed &ndash;&gt;
+&lt;!&ndash; <script src="https://cdn.jsdelivr.net/npm/vue"></script> &ndash;&gt;-->
 </body>
 </html>
