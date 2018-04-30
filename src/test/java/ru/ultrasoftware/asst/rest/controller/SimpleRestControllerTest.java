@@ -7,15 +7,22 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
+import org.springframework.context.annotation.Import;
 import org.springframework.http.MediaType;
+import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
+import org.springframework.test.web.servlet.setup.MockMvcBuilders;
+
 import ru.ultrasoftware.asst.rest.domain.PingPong;
+import ru.ultrasoftware.asst.security.WebSecurityConfig;
 
 @RunWith(SpringRunner.class)
+
 @WebMvcTest(SimpleRestController.class)
+@Import(WebSecurityConfig.class)
 public class SimpleRestControllerTest {
 
     @Autowired
@@ -26,6 +33,7 @@ public class SimpleRestControllerTest {
 
     @Before
     public void setup() {
+    	
     }
 
     @Test
