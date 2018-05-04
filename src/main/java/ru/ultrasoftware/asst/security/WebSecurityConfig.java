@@ -7,31 +7,29 @@ import org.springframework.security.config.annotation.authentication.builders.Au
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
+import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
-import ru.ultrasoftware.asst.service.impl.UserDetailsServiceImpl;
- 
 @Configuration
 @EnableWebSecurity
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
- 
+
     @Autowired
-    UserDetailsServiceImpl userDetailsService;
- 
+    private UserDetailsService userDetailsService;
+
     @Bean
     public BCryptPasswordEncoder passwordEncoder() {
         BCryptPasswordEncoder bCryptPasswordEncoder = new BCryptPasswordEncoder();
         return bCryptPasswordEncoder;
     }
-     
-     
+
     @Autowired
-    public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception { 
- 
+    public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
+
         // Setting Service to find User in the database.
         // And Setting PassswordEncoder
-        auth.userDetailsService(userDetailsService).passwordEncoder(passwordEncoder());     
- 
+        auth.userDetailsService(userDetailsService).passwordEncoder(passwordEncoder());
+
     }
  
     @Override
