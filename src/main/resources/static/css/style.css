@@ -67,6 +67,13 @@ ul {
     border-color: #6610f2;
 }
 
+.btn-primary:disabled{
+    color: #343a40;
+    background-color: #fff;
+    border-color: #6610f2;
+    opacity: .3;
+}
+
 .btn-primary:not(:disabled):not(.disabled).active,
 .btn-primary:not(:disabled):not(.disabled):active,
 .show>.btn-primary.dropdown-toggle {
