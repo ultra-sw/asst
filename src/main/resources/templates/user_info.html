@@ -32,11 +32,45 @@
                         <span th:utext="${#httpServletRequest.userPrincipal.name}"></span>
                     </h3>
                     <b>This is protected page!</b>
-
-                    <br/>
-                    <br/>
-
                     <div th:if="${userInfo != null}" th:utext="${userInfo}"></div>
+
+                    <h2>Портфели</h2>
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th>Название</th>
+                                <th>Номинальная стоимость</th>
+                                <th>Рыночная стоимость</th>
+                                <th>Акционная стоимость</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Портфель 1</td>
+                                <td>100</td>
+                                <td>150</td>
+                                <td>90</td>
+                            </tr>
+                            <tr>
+                                <td>Портфель 2</td>
+                                <td>100</td>
+                                <td>150</td>
+                                <td>90</td>
+                            </tr>
+                            <tr>
+                                <td>Портфель 3</td>
+                                <td>100</td>
+                                <td>150</td>
+                                <td>90</td>
+                            </tr>
+                            <tr>
+                                <td>Портфель 4</td>
+                                <td>100</td>
+                                <td>150</td>
+                                <td>90</td>
+                            </tr>
+                        </tbody>
+                    </table>
 
                 </div>
             </div>
