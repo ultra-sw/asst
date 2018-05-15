@@ -7,7 +7,7 @@
                 <a th:href="@{/}">Главная</a>
             </li>
             <li th:if="${#httpServletRequest.userPrincipal != null}" class="list-group-item">
-                <a th:href="@{/dashboard}">Dashboard</a>
+                <a th:href="@{/dashboard}">Мои портфели</a>
             </li>
             <li th:if="${#httpServletRequest.userPrincipal != null}" class="list-group-item">
                 <a th:href="@{/user-info}">Информация о пользователе</a>
@@ -22,25 +22,46 @@
             <!-- /Пункты бокового меню -->
         </ul>
     </div>
+    <div th:if="${#httpSession!= null}">
     <div class="dropdown-menu login" v-bind:class="{ open: isLoginOpen }">
         <!-- Форма входа -->
         <form name='f' th:action="@{/j_spring_security_check}" method="POST">
-            <div class="form-group">
-                <input type="text" class="form-control" name="username" placeholder="Введите логин" />
-                <!--<input type="email" class="form-control" name="username" placeholder="Введите e-mail" />-->
+            <div th:if="${isAdmin == true}" class="form-group">
+                <a href="/admin" class="btn btn-primary col">Администрирование</a>
             </div>
             <div class="form-group">
-                <input type="password" class="form-control" name="password" placeholder="Введите пароль" />
+                <a href = "/user-info" class="btn btn-primary col">Профиль</a>
             </div>
             <div class="form-group">
-                <button type="submit" class="btn btn-primary col">Войти</button>
-            </div>
-            <div class="form-group">
-                <a href="/registration" class="btn btn-primary col">Регистрация</a>
+                <a href="/logout" class="btn btn-primary col">Выйти</a>
             </div>
         </form>
         <!-- /Форма входа -->
     </div>
+    </div>
+
+    <div th:if="${#httpSession == null}">
+        <div class="dropdown-menu login" v-bind:class="{ open: isLoginOpen }">
+            <!-- Форма входа -->
+            <form name='f' th:action="@{/j_spring_security_check}" method="POST">
+                <div class="form-group">
+                    <input id="navLoginInput" type="text" class="form-control" name="username" placeholder="Введите логин" onKeyUp="navLoginButtonLocker()" onChange="navLoginButtonLocker()"/>
+                    <!--<input type="email" class="form-control" name="username" placeholder="Введите e-mail" />-->
+                </div>
+                <div class="form-group">
+                    <input id="navPasswordInput" type="password" class="form-control" name="password" placeholder="Введите пароль" onKeyUp="navLoginButtonLocker()" onChange="navLoginButtonLocker()"/>
+                </div>
+                <div class="form-group">
+                    <button id="navLoginButton" type="submit" class="btn btn-primary col">Войти</button>
+                </div>
+                <div class="form-group">
+                    <a href="/registration" class="btn btn-primary col">Регистрация</a>
+                </div>
+            </form>
+            <!-- /Форма входа -->
+        </div>
+    </div>
+
     <nav class="navbar navbar-light bg-light justify-content-between">
         <div class="col-6">
             <div class="row">
@@ -53,10 +74,13 @@
         <div class="col-6">
             <div class="row" style="float: right" v-bind:class="{ open: isLoginOpen }">
                 <!-- Правая навигационная панель -->
-                <a>{{ userName }}</a>
+                <div th:if="${#httpServletRequest.userPrincipal != null}"><a><span th:utext="${#httpServletRequest.userPrincipal.name}"></span></a></div>
+                <div th:if="${#httpServletRequest.userPrincipal == null}"><a><span th:utext="''"></span></a></div>
                 <i v-on:click="buttonLogin" class="material-icons">person</i>
                 <!-- /Правая навигационная панель -->
             </div>
         </div>
     </nav>
 </div>
+<!-- Скрипт блокировки кнопки "Войти" до тех пор, пока не будут заполнены поля -->
+<script type="text/javascript" src="/js/navLoginButtonLocker.js"></script>

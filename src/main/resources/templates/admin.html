@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="ru" xmlns:th="http://www.w3.org/1999/xhtml">
+
+<head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
+    <link rel="icon" type="image/png" href="img/favicon.png"/>
+
+    <!-- Стили -->
+    <link rel="stylesheet" href="/node_modules/bootstrap/dist/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="//fonts.googleapis.com/icon?family=Material+Icons"/>
+    <link rel="stylesheet" href="/css/style.css"/>
+    <!-- /Стили -->
+
+    <title th:utext="${title}"></title>
+</head>
+
+<body>
+<div id="app" class="container-fluid">
+
+    <!-- навигация -->
+    <th:block th:include="/main_nav"/>
+    <!-- /навигация -->
+
+    <!-- Контент -->
+    <div id="content" class="container">
+        <div class="row">
+            <div class="col">
+                <h1>Администрирование</h1>
+            </div>
+        </div>
+        <div class="row-2">
+            Тут предстоит сделать интерфейс администратора
+        </div>
+
+        <!-- /Контент -->
+
+    </div>
+</div>
+
+<!-- Bootstrap-->
+<script src="/node_modules/jquery/dist/jquery.slim.min.js"></script>
+<script src="/node_modules/popper.js/dist/umd/popper.min.js"></script>
+<script src="/node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+<!-- /Bootstrap-->
+
+<!-- Vue -->
+<script src="/node_modules/vue/dist/vue.js"></script>
+<!-- production version, optimized for size and speed -->
+<!-- <script src="/node_modules/vue/dist/vue.min.js"></script> -->
+<script src="/js/vue-scripts.js"></script>
+<!-- /Vue -->
+
+</body>
+
+</html>

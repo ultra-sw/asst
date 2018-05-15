@@ -2,95 +2,70 @@
 <html lang="ru" xmlns:th="http://www.w3.org/1999/xhtml">
 
 <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-    <link rel="icon" type="image/png" href="img/favicon.png" />
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
+    <link rel="icon" type="image/png" href="img/favicon.png"/>
 
     <!-- Стили -->
-    <link rel="stylesheet" href="/node_modules/bootstrap/dist/css/bootstrap.min.css" />
-    <link rel="stylesheet" href="//fonts.googleapis.com/icon?family=Material+Icons" />
-    <link rel="stylesheet" href="/css/style.css" />
+    <link rel="stylesheet" href="/node_modules/bootstrap/dist/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="//fonts.googleapis.com/icon?family=Material+Icons"/>
+    <link rel="stylesheet" href="/css/style.css"/>
     <!-- /Стили -->
 
     <title>User Info</title>
 </head>
 
 <body>
-    <div id="app" class="container-fluid">
+<script>
 
-        <!-- навигация -->
-        <th:block th:include="/main_nav" />
-        <!-- /навигация -->
+</script>
+<div id="app" class="container-fluid">
 
-        <!-- Контент -->
-        <div id="content" class="container">
-            <div class="row">
-                <div class="col">
+    <!-- навигация -->
+    <th:block th:include="/main_nav"/>
+    <!-- /навигация -->
 
-                    <h2>User Info Page</h2>
-                    <h3>Welcome :
-                        <span th:utext="${#httpServletRequest.userPrincipal.name}"></span>
-                    </h3>
-                    <b>This is protected page!</b>
-                    <div th:if="${userInfo != null}" th:utext="${userInfo}"></div>
+    <!-- Контент -->
+    <div id="content" class="container">
+        <div class="row">
+            <div class="col">
 
-                    <h2>Портфели</h2>
-                    <table class="table table-striped">
-                        <thead>
-                            <tr>
-                                <th>Название</th>
-                                <th>Номинальная стоимость</th>
-                                <th>Рыночная стоимость</th>
-                                <th>Акционная стоимость</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>Портфель 1</td>
-                                <td>100</td>
-                                <td>150</td>
-                                <td>90</td>
-                            </tr>
-                            <tr>
-                                <td>Портфель 2</td>
-                                <td>100</td>
-                                <td>150</td>
-                                <td>90</td>
-                            </tr>
-                            <tr>
-                                <td>Портфель 3</td>
-                                <td>100</td>
-                                <td>150</td>
-                                <td>90</td>
-                            </tr>
-                            <tr>
-                                <td>Портфель 4</td>
-                                <td>100</td>
-                                <td>150</td>
-                                <td>90</td>
-                            </tr>
-                        </tbody>
-                    </table>
+                <h2>Информация о пользователе</h2>
 
-                </div>
+                <div th:if="${userInfo != null}" th:utext="${userInfo}"></div>
+                <div th:if="${userRole != null}" th:utext="${userRole}"></div>
+                <div th:if="${isAdmin != null}" th:utext="${isAdmin}"></div>
+
+
             </div>
         </div>
-        <!-- /Контент -->
+        <div class="row-2">
+            Зарегестрирован:
+        </div>
+        <div class="row-3">
+            Активных портфелей:
+        </div>
+        <div class="row-4">
+            Баланс средств по всем портфелям:
+        </div>
 
     </div>
+    <!-- /Контент -->
 
-    <!-- Bootstrap-->
-    <script src="/node_modules/jquery/dist/jquery.slim.min.js"></script>
-    <script src="/node_modules/popper.js/dist/umd/popper.min.js"></script>
-    <script src="/node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
-    <!-- /Bootstrap-->
+</div>
 
-    <!-- Vue -->
-    <script src="/node_modules/vue/dist/vue.js"></script>
-    <!-- production version, optimized for size and speed -->
-    <!-- <script src="/node_modules/vue/dist/vue.min.js"></script> -->
-    <script src="/js/vue-scripts.js"></script>
-    <!-- /Vue -->
+<!-- Bootstrap-->
+<script src="/node_modules/jquery/dist/jquery.slim.min.js"></script>
+<script src="/node_modules/popper.js/dist/umd/popper.min.js"></script>
+<script src="/node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+<!-- /Bootstrap-->
+
+<!-- Vue -->
+<script src="/node_modules/vue/dist/vue.js"></script>
+<!-- production version, optimized for size and speed -->
+<!-- <script src="/node_modules/vue/dist/vue.min.js"></script> -->
+<script src="/js/vue-scripts.js"></script>
+<!-- /Vue -->
 
 </body>
 
