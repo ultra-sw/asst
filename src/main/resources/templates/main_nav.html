@@ -6,10 +6,10 @@
             <li class="list-group-item">
                 <a th:href="@{/}">Главная</a>
             </li>
-            <li class="list-group-item">
+            <li th:if="${#httpServletRequest.userPrincipal != null}" class="list-group-item">
                 <a th:href="@{/dashboard}">Dashboard</a>
             </li>
-            <li class="list-group-item">
+            <li th:if="${#httpServletRequest.userPrincipal != null}" class="list-group-item">
                 <a th:href="@{/user-info}">Информация о пользователе</a>
             </li>
             <li th:if="${#httpServletRequest.userPrincipal != null}" class="list-group-item">

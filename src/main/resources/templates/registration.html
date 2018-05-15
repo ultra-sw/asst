@@ -25,7 +25,7 @@
 
         <!-- Контент -->
         <div id="content" class="container" style="margin-top:2px;">
-            <form action="/hello" method="post">
+            <form action="/registration" method="post">
                 <div class="form-group">
                     <div class="row">
                         <div id="wand">
@@ -36,15 +36,15 @@
                             <form>
                                 <div class="form-group">
                                     <label>Имя в системе:</label>
-                                    <input type="email" class="form-control" name="login" placeholder="Слово или e-mail на латинском алфавите" />
+                                    <input type="text" class="form-control" id ="login" name="login" placeholder="Слово или e-mail на латинском алфавите" style="height: 43px !important; width: 98% !important; box-shadow: -1px 1px #6610f236;" onChange="checkPasswordMatch();" />
                                 </div>
                                 <div class="form-group">
                                     <label>Пароль в системе:</label>
-                                    <input type="password" class="form-control" placeholder="Латинский алфавит, цифры и не только" id="psw" name="psw" onChange="checkPasswordMatch();" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters" required="true" />
+                                    <input type="password" class="form-control" placeholder="Латинский алфавит, цифры и не только" id="psw" name="psw" onChange="checkPasswordMatch();" required="true" style="height: 43px !important; width: 98% !important; box-shadow: -1px 1px #6610f236;" /> <!-- pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters"-->
                                 </div>
                                 <div class="form-group">
                                     <label> Повтор пароля:</label>
-                                    <input type="password" class="form-control" style="margin-bottom:1px" id="psw2" name="psw2" onChange="checkPasswordMatch();" />
+                                    <input type="password" class="form-control" id="psw2" name="psw2" onChange="checkPasswordMatch();" style="height: 43px !important; width: 98% !important; margin-bottom:1px; box-shadow: -1px 1px #6610f236;"/>
                                 </div>
                                 <!-- <img src="img/promo-img.png" alt="promo-img" /> -->
                             </form>
@@ -72,7 +72,7 @@
                         </div>
                         <div class="col-3">
                             <div class="try-it">
-                                <button type="submit" class="btn btn-primary">Далее →</button>
+                                <button id ="next" type="submit" class="btn btn-primary" style="margin-left: -99px; disabled:true;">Далее →</button>
                             </div>
                         </div>
                     </div>
@@ -82,100 +82,17 @@
         <!-- /Контент -->
 
     </div>
-    <script>
-        var myInput = document.getElementById("psw");
-        var letter = document.getElementById("letter");
-        var capital = document.getElementById("capital");
-        var number = document.getElementById("number");
-        var length = document.getElementById("length");
+    <!-- Скрипт рекомендации по паролю -->
+    <script type="text/javascript" src="/js/pswRecommendations.js"></script>
+    <!-- Скрипт проверки паролей на совпадение. При совпадении активируется кнопка "Далее"-->
+    <script type="text/javascript" src="/js/pswChecker.js"></script>
 
-        // When the user clicks on the password field, show the message box
-        myInput.onfocus = function () {
-            document.getElementById("message").style.display = "block";
-        }
-
-        // When the user clicks outside of the password field, hide the message box
-        myInput.onblur = function () {
-            document.getElementById("message").style.display = "none";
-        }
-
-        // When the user starts to type something inside the password field
-        myInput.onkeyup = function () {
-            // Validate lowercase letters
-            var lowerCaseLetters = /[a-z]/g;
-            if (myInput.value.match(lowerCaseLetters)) {
-                letter.classList.remove("invalid");
-                letter.classList.add("valid");
-            } else {
-                letter.classList.remove("valid");
-                letter.classList.add("invalid");
-            }
-
-            // Validate capital letters
-            var upperCaseLetters = /[A-Z]/g;
-            if (myInput.value.match(upperCaseLetters)) {
-                capital.classList.remove("invalid");
-                capital.classList.add("valid");
-            } else {
-                capital.classList.remove("valid");
-                capital.classList.add("invalid");
-            }
-
-            // Validate numbers
-            var numbers = /[0-9]/g;
-            if (myInput.value.match(numbers)) {
-                number.classList.remove("invalid");
-                number.classList.add("valid");
-            } else {
-                number.classList.remove("valid");
-                number.classList.add("invalid");
-            }
-
-            // Validate length
-            if (myInput.value.length >= 8) {
-                length.classList.remove("invalid");
-                length.classList.add("valid");
-            } else {
-                length.classList.remove("valid");
-                length.classList.add("invalid");
-            }
-        }
-    </script>
-    <script type="text/javascript">
-        function checkPasswordMatch() {
-            var password = $("#psw").val();
-            var confirmPassword = $("#psw2").val();
-
-            $(document).ready(function () {
-                $("#psw, #psw2").keyup(checkPasswordMatch);
-            });
-            if (password == "" || confirmPassword == "") {
-                $("#divCheckPasswordMatch").html("");
-                document.getElementById("divCheckPasswordMatch").style.display = "none";
-            }
-
-            if (password != confirmPassword) {
-                document.getElementById("divCheckPasswordMatch").style.borderLeft = "3px solid #dc3545";
-                document.getElementById("divCheckPasswordMatch").style.display = "block";
-                $("#divCheckPasswordMatch").html("Пароль повторён <b>не</b> верно");
-
-            } else {
-                document.getElementById("divCheckPasswordMatch").style.display = "block";
-                document.getElementById("divCheckPasswordMatch").style.borderLeft = "3px solid #28a745";
-                $("#divCheckPasswordMatch").html("Пароль повторён верно");
-                if ((password == "") || (confirmPassword == "")) {
-                    document.getElementById("divCheckPasswordMatch").style.display = "none";
-                }
-
-            }
-        }
-    </script>
     <!--<p th:text="'Hellsdfsfsfsfdo, ' + ${name} + '!'" />
-<p th:text="'We already have a company:'" />
-<ul>
+    <p th:text="'We already have a company:'" />
+    <ul>
     <li th:each="user : ${users}" th:text="${user.name}" />
-</ul>
--->
+    </ul>
+    -->
 
     <!-- Bootstrap-->
     <script src="/node_modules/jquery/dist/jquery.slim.min.js"></script>
