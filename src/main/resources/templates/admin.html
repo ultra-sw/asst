@@ -12,13 +12,10 @@
     <link rel="stylesheet" href="/css/style.css"/>
     <!-- /Стили -->
 
-    <title>User Info</title>
+    <title th:utext="${title}"></title>
 </head>
 
 <body>
-<script>
-
-</script>
 <div id="app" class="container-fluid">
 
     <!-- навигация -->
@@ -29,29 +26,16 @@
     <div id="content" class="container">
         <div class="row">
             <div class="col">
-
-                <h2>Информация о пользователе</h2>
-
-                <div th:if="${userInfo != null}" th:utext="${userInfo}"></div>
-                <div th:if="${userRole != null}" th:utext="${userRole}"></div>
-                <div th:if="${isAdmin != null}" th:utext="${isAdmin}"></div>
-
-
+                <h1>Администрирование</h1>
             </div>
         </div>
         <div class="row-2">
-            Зарегестрирован:
+            Тут предстоит сделать интерфейс администратора
         </div>
-        <div class="row-3">
-            Активных портфелей:
-        </div>
-        <div class="row-4">
-            Баланс средств по всем портфелям:
-        </div>
+
+        <!-- /Контент -->
 
     </div>
-    <!-- /Контент -->
-
 </div>
 
 <!-- Bootstrap-->

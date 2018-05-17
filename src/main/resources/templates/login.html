@@ -2,82 +2,84 @@
 <html lang="ru" xmlns:th="http://www.w3.org/1999/xhtml">
 
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-  <link rel="icon" type="image/png" href="img/favicon.png" />
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
+    <link rel="icon" type="image/png" href="img/favicon.png"/>
 
-  <!-- Стили -->
-  <link rel="stylesheet" href="/node_modules/bootstrap/dist/css/bootstrap.min.css" />
-  <link rel="stylesheet" href="//fonts.googleapis.com/icon?family=Material+Icons" />
-  <link rel="stylesheet" href="/css/style.css" />
-  <!-- /Стили -->
+    <!-- Стили -->
+    <link rel="stylesheet" href="/node_modules/bootstrap/dist/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="//fonts.googleapis.com/icon?family=Material+Icons"/>
+    <link rel="stylesheet" href="/css/style.css"/>
+    <!-- /Стили -->
 
-  <title>Login</title>
+    <title>Login</title>
 </head>
 
 
 <body>
-  <div id="app" class="container-fluid">
+<div id="app" class="container-fluid">
 
     <!-- навигация -->
-    <th:block th:include="/main_nav" />
+    <th:block th:include="/main_nav"/>
     <!-- /навигация -->
 
     <!-- Контент -->
     <div id="content" class="container">
-      <div class="row">
-        <div class="col">
-          <h1>Login</h1>
+        <div class="row">
+            <div class="col">
+                <!--<h1>Авторизация на сайте</h1>-->
 
-          <!-- /login?error=true -->
-          <div th:if="${#httpServletRequest.getParameter('error') == 'true'}" style="color:red;margin:10px 0px;">
-            Login Failed!!!
-            <br /> Reason :
-            <span th:if="${#httpSession!= null and #httpSession.getAttribute('SPRING_SECURITY_LAST_EXCEPTION') != null}" th:utext="${#httpSession.getAttribute('SPRING_SECURITY_LAST_EXCEPTION').message}">
+                <!-- /login?error=true -->
+                <div th:if="${#httpServletRequest.getParameter('error') == 'true'}" style="color:red;margin:10px 0px;">
+                    Ошибка входа
+                    <br/> Сообщите в службу поддержки следующую информацию:
+                    <span th:if="${#httpSession!= null and #httpSession.getAttribute('SPRING_SECURITY_LAST_EXCEPTION') != null}"
+                          th:utext="${#httpSession.getAttribute('SPRING_SECURITY_LAST_EXCEPTION').message}">
               Static summary
             </span>
-          </div>
+                </div>
 
-          <h1>Enter user name and password:</h1>
-          <form name="f" th:action="@{/j_spring_security_check}" method="POST">
-            <div class="form-group">
-              <label>User:</label>
-              <input type="text" class="form-control" name="username" value="" />
-            </div>
-            <div class="form-group">
-              <label>Password:</label>
-              <input type="password" class="form-control" name="password" />
-            </div>
-            <div class="form-group">
-              <input class="btn btn-primary" name="submit" type="submit" value="submit" />
-            </div>
-          </form>
+                <h1>Введите имя пользователя и пароль:</h1>
+                <form name="f" th:action="@{/j_spring_security_check}" method="POST">
+                    <div class="form-group">
+                        <label>User:</label>
+                        <input type="text" class="form-control" name="username" value=""/>
+                    </div>
+                    <div class="form-group">
+                        <label>Password:</label>
+                        <input type="password" class="form-control" name="password"/>
+                    </div>
+                    <div class="form-group">
+                        <input class="btn btn-primary" name="submit" type="submit" value="Войти"/>
+                    </div>
+                </form>
 
-          <h4>Username/pass:</h4>
-          <ul>
-            <li>dbuser1/123</li>
-            <li>dbadmin1/123</li>
-          </ul>
-
+                <div class="note" style="opacity: 0.1;">
+                    <h4>Пары логин/пароль для отладки:</h4>
+                    <ul>
+                        <li>dbuser1/123</li>
+                        <li>dbadmin1/123</li>
+                    </ul>
+                </div>
+            </div>
         </div>
-      </div>
     </div>
     <!-- /Контент -->
 
-  </div>
+</div>
 
-  <!-- Bootstrap-->
-  <script src="/node_modules/jquery/dist/jquery.slim.min.js"></script>
-  <script src="/node_modules/popper.js/dist/umd/popper.min.js"></script>
-  <script src="/node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
-  <!-- /Bootstrap-->
+<!-- Bootstrap-->
+<script src="/node_modules/jquery/dist/jquery.slim.min.js"></script>
+<script src="/node_modules/popper.js/dist/umd/popper.min.js"></script>
+<script src="/node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+<!-- /Bootstrap-->
 
-  <!-- Vue -->
-  <script src="/node_modules/vue/dist/vue.js"></script>
-  <!-- production version, optimized for size and speed -->
-  <!-- <script src="/node_modules/vue/dist/vue.min.js"></script> -->
-  <script src="/js/vue-scripts.js"></script>
-  <!-- /Vue -->
+<!-- Vue -->
+<script src="/node_modules/vue/dist/vue.js"></script>
+<!-- production version, optimized for size and speed -->
+<!-- <script src="/node_modules/vue/dist/vue.min.js"></script> -->
+<script src="/js/vue-scripts.js"></script>
+<!-- /Vue -->
 
 </body>
 
