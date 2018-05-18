@@ -6,11 +6,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
     <link rel="icon" type="image/png" href="img/favicon.png" />
 
-    <!-- Стили -->
+    <!-- стили -->
     <link rel="stylesheet" href="/node_modules/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="//fonts.googleapis.com/icon?family=Material+Icons" />
     <link rel="stylesheet" href="/css/style.css" />
-    <!-- /Стили -->
+    <!-- /стили -->
 
     <title th:utext="${title}"></title>
 </head>
@@ -22,58 +22,143 @@
         <th:block th:include="/main_nav" />
         <!-- /навигация -->
 
-        <!-- Контент -->
+        <!-- контент -->
         <div id="content" class="container">
             <div class="row">
                 <div class="col">
-
-
                     <h2>Панель мониторинга портфелей</h2>
                     <table class="table table-striped">
                         <thead>
-                        <tr>
-                            <th>Название</th>
-                            <th>Номинальная стоимость</th>
-                            <th>Рыночная стоимость</th>
-                            <th>Акционная стоимость</th>
-                        </tr>
+                            <tr>
+                                <th>Название</th>
+                                <th>Номинальная стоимость</th>
+                                <th>Рыночная стоимость</th>
+                                <th>Акционная стоимость</th>
+                            </tr>
                         </thead>
                         <tbody>
-                        <tr>
-                            <td>Портфель 1</td>
-                            <td>100</td>
-                            <td>150</td>
-                            <td>90</td>
-                        </tr>
-                        <tr>
-                            <td>Портфель 2</td>
-                            <td>100</td>
-                            <td>150</td>
-                            <td>90</td>
-                        </tr>
-                        <tr>
-                            <td>Портфель 3</td>
-                            <td>100</td>
-                            <td>150</td>
-                            <td>90</td>
-                        </tr>
-                        <tr>
-                            <td>Портфель 4</td>
-                            <td>100</td>
-                            <td>150</td>
-                            <td>90</td>
-                        </tr>
+                            <tr v-on:click="buttonPortfolio">
+                                <td>Портфель 1</td>
+                                <td>100</td>
+                                <td>150</td>
+                                <td>90</td>
+                            </tr>
+                            <tr v-on:click="buttonPortfolio">
+                                <td>Портфель 2</td>
+                                <td>100</td>
+                                <td>150</td>
+                                <td>90</td>
+                            </tr>
+                            <tr v-on:click="buttonPortfolio">
+                                <td>Портфель 3</td>
+                                <td>100</td>
+                                <td>150</td>
+                                <td>90</td>
+                            </tr>
+                            <tr v-on:click="buttonPortfolio">
+                                <td>Портфель 4</td>
+                                <td>100</td>
+                                <td>150</td>
+                                <td>90</td>
+                            </tr>
                         </tbody>
                     </table>
-
-
-                    <br/>
-                    <br/>
-
                 </div>
             </div>
+            <!-- всплывающее окно "содержание портфеля" -->
+            <div class="dropdown-menu portfolio" v-bind:class="{ open: isPortfolioOpen }">
+                <h2>Просмотр портфеля</h2>
+                <i v-on:click="buttonPortfolio" class="material-icons close">close</i>
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th>Название</th>
+                            <th>Цена</th>
+                            <th>Макс.</th>
+                            <th>Мин.</th>
+                            <th>Изм.</th>
+                            <th>Изм. %</th>
+                            <th>Объём</th>
+                            <th>Время</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>АК АЛРОСА</td>
+                            <td>93</td>
+                            <td>94</td>
+                            <td>92</td>
+                            <td>+0,57</td>
+                            <td>+0,61%</td>
+                            <td>4,19М</td>
+                            <td>14:20:39</td>
+                        </tr>
+                        <tr>
+                            <td>АК АЛРОСА</td>
+                            <td>93</td>
+                            <td>94</td>
+                            <td>92</td>
+                            <td>+0,57</td>
+                            <td>+0,61%</td>
+                            <td>4,19М</td>
+                            <td>14:20:39</td>
+                        </tr>
+                        <tr>
+                            <td>АК АЛРОСА</td>
+                            <td>93</td>
+                            <td>94</td>
+                            <td>92</td>
+                            <td>+0,57</td>
+                            <td>+0,61%</td>
+                            <td>4,19М</td>
+                            <td>14:20:39</td>
+                        </tr>
+                        <tr>
+                            <td>АК АЛРОСА</td>
+                            <td>93</td>
+                            <td>94</td>
+                            <td>92</td>
+                            <td>+0,57</td>
+                            <td>+0,61%</td>
+                            <td>4,19М</td>
+                            <td>14:20:39</td>
+                        </tr>
+                        <tr>
+                            <td>АК АЛРОСА</td>
+                            <td>93</td>
+                            <td>94</td>
+                            <td>92</td>
+                            <td>+0,57</td>
+                            <td>+0,61%</td>
+                            <td>4,19М</td>
+                            <td>14:20:39</td>
+                        </tr>
+                        <tr>
+                            <td>АК АЛРОСА</td>
+                            <td>93</td>
+                            <td>94</td>
+                            <td>92</td>
+                            <td>+0,57</td>
+                            <td>+0,61%</td>
+                            <td>4,19М</td>
+                            <td>14:20:39</td>
+                        </tr>
+                        <tr>
+                            <td>АК АЛРОСА</td>
+                            <td>93</td>
+                            <td>94</td>
+                            <td>92</td>
+                            <td>+0,57</td>
+                            <td>+0,61%</td>
+                            <td>4,19М</td>
+                            <td>14:20:39</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <!-- /всплывающее окно "содержание портфеля" -->
         </div>
-        <!-- /Контент -->
+        <!-- /контент -->
 
     </div>
 
@@ -88,6 +173,7 @@
     <!-- production version, optimized for size and speed -->
     <!-- <script src="/node_modules/vue/dist/vue.min.js"></script> -->
     <script src="/js/vue-scripts.js"></script>
+    <script src="/js/portfolio.js"></script>
     <!-- /Vue -->
 
 </body>

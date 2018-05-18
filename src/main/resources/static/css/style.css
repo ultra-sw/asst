@@ -28,6 +28,27 @@
 
 /* /Стили меню */
 
+.dropdown-menu.portfolio {
+    display: none;
+    position: fixed;
+    top: 5%;
+    left: 5%;
+    bottom: 5%;
+    right: 5%;
+}
+
+.dropdown-menu.portfolio.open {
+    display: block;
+}
+
+.material-icons.close {
+    float: right;
+    position: absolute;
+    right: 0;
+    top: 0;
+    padding: 15px;
+}
+
 /* Стили значков */
 
 i {
@@ -67,7 +88,7 @@ ul {
     border-color: #6610f2;
 }
 
-.btn-primary:disabled{
+.btn-primary:disabled {
     color: #343a40;
     background-color: #fff;
     border-color: #6610f2;

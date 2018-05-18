@@ -23,21 +23,21 @@
         </ul>
     </div>
     <div th:if="${#httpSession!= null}">
-    <div class="dropdown-menu login" v-bind:class="{ open: isLoginOpen }">
-        <!-- Форма входа -->
-        <form name='f' th:action="@{/j_spring_security_check}" method="POST">
-            <div th:if="${isAdmin == true}" class="form-group">
-                <a href="/admin" class="btn btn-primary col">Администрирование</a>
-            </div>
-            <div class="form-group">
-                <a href = "/user-info" class="btn btn-primary col">Профиль</a>
-            </div>
-            <div class="form-group">
-                <a href="/logout" class="btn btn-primary col">Выйти</a>
-            </div>
-        </form>
-        <!-- /Форма входа -->
-    </div>
+        <div class="dropdown-menu login" v-bind:class="{ open: isLoginOpen }">
+            <!-- Форма входа -->
+            <form name='f' th:action="@{/j_spring_security_check}" method="POST">
+                <div th:if="${isAdmin == true}" class="form-group">
+                    <a href="/admin" class="btn btn-primary col">Администрирование</a>
+                </div>
+                <div class="form-group">
+                    <a href="/user-info" class="btn btn-primary col">Профиль</a>
+                </div>
+                <div class="form-group">
+                    <a href="/logout" class="btn btn-primary col">Выйти</a>
+                </div>
+            </form>
+            <!-- /Форма входа -->
+        </div>
     </div>
 
     <div th:if="${#httpSession == null}">
@@ -45,11 +45,11 @@
             <!-- Форма входа -->
             <form name='f' th:action="@{/j_spring_security_check}" method="POST">
                 <div class="form-group">
-                    <input id="navLoginInput" type="text" class="form-control" name="username" placeholder="Введите логин" onKeyUp="navLoginButtonLocker()" onChange="navLoginButtonLocker()"/>
+                    <input id="navLoginInput" type="text" class="form-control" name="username" placeholder="Введите логин" onKeyUp="navLoginButtonLocker()" onChange="navLoginButtonLocker()" />
                     <!--<input type="email" class="form-control" name="username" placeholder="Введите e-mail" />-->
                 </div>
                 <div class="form-group">
-                    <input id="navPasswordInput" type="password" class="form-control" name="password" placeholder="Введите пароль" onKeyUp="navLoginButtonLocker()" onChange="navLoginButtonLocker()"/>
+                    <input id="navPasswordInput" type="password" class="form-control" name="password" placeholder="Введите пароль" onKeyUp="navLoginButtonLocker()" onChange="navLoginButtonLocker()" />
                 </div>
                 <div class="form-group">
                     <button id="navLoginButton" type="submit" class="btn btn-primary col">Войти</button>
@@ -74,8 +74,16 @@
         <div class="col-6">
             <div class="row" style="float: right" v-bind:class="{ open: isLoginOpen }">
                 <!-- Правая навигационная панель -->
-                <div th:if="${#httpServletRequest.userPrincipal != null}"><a><span th:utext="${#httpServletRequest.userPrincipal.name}"></span></a></div>
-                <div th:if="${#httpServletRequest.userPrincipal == null}"><a><span th:utext="''"></span></a></div>
+                <div th:if="${#httpServletRequest.userPrincipal != null}">
+                    <a>
+                        <span th:utext="${#httpServletRequest.userPrincipal.name}"></span>
+                    </a>
+                </div>
+                <div th:if="${#httpServletRequest.userPrincipal == null}">
+                    <a>
+                        <span th:utext="''"></span>
+                    </a>
+                </div>
                 <i v-on:click="buttonLogin" class="material-icons">person</i>
                 <!-- /Правая навигационная панель -->
             </div>

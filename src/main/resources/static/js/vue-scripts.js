@@ -3,7 +3,7 @@ var navibar = new Vue({
     data: {
         isMenuOpen: false,
         isLoginOpen: false,
-        userName: "<Имя пользователя после входа>"
+        //userName: "<Имя пользователя после входа>"
     },
     methods: {
         buttonMenu: function (event) {
