@@ -19,15 +19,17 @@
     <div id="app" class="container-fluid">
 
         <!-- навигация -->
-        <th:block th:include="/main_nav" />
+        <th:block th:include="/main_nav" v-else="isPortfolioOpen"/>
         <!-- /навигация -->
 
         <!-- контент -->
         <div id="content" class="container">
             <div class="row">
-                <div class="col">
-                    <h2>Панель мониторинга портфелей</h2>
-                    <table class="table table-striped">
+                <div class="col" v-if="isPortfolioOpen"></div>
+                <div class="col" v-else="isPortfolioOpen">
+
+                    <div id ="h2-table"><h2>Панель мониторинга портфелей</h2></div>
+                    <div id = "table-content"><table class="table table-striped">
                         <thead>
                             <tr>
                                 <th>Название</th>
@@ -62,12 +64,14 @@
                                 <td>90</td>
                             </tr>
                         </tbody>
-                    </table>
+                    </table></div>
                 </div>
-            </div>
+
+                </div>
             <!-- всплывающее окно "содержание портфеля" -->
             <div class="dropdown-menu portfolio" v-bind:class="{ open: isPortfolioOpen }">
-                <h2>Просмотр портфеля</h2>
+                <div class = "background-shadow">
+                <h2 style="margin-left: 389px;">Просмотр портфеля</h2>
                 <i v-on:click="buttonPortfolio" class="material-icons close">close</i>
                 <table class="table table-striped">
                     <thead>
@@ -160,7 +164,7 @@
         </div>
         <!-- /контент -->
 
-    </div>
+        </div></div>
 
     <!-- Bootstrap-->
     <script src="/node_modules/jquery/dist/jquery.slim.min.js"></script>

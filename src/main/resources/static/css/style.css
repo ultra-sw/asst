@@ -5,6 +5,7 @@
     position: fixed;
     top: 40px;
     left: 15px;
+    z-index:100;
 }
 
 .dropdown-menu.menu.open {
@@ -22,6 +23,10 @@
     padding: .75rem 1.25rem;
 }
 
+.background-shading{
+
+}
+
 .dropdown-menu.login.open {
     display: block;
 }
@@ -33,12 +38,23 @@
     position: fixed;
     top: 5%;
     left: 5%;
-    bottom: 5%;
+    bottom: 47%;
     right: 5%;
+    z-index:0;
 }
 
 .dropdown-menu.portfolio.open {
     display: block;
+    box-shadow: -2px 2px #6610f236;
+    /* background-color: #ffcb0e;*/
+    background-color: #cc55cc1c;
+}
+
+tr{
+}
+
+td{
+    background-color: #fff;
 }
 
 .material-icons.close {
